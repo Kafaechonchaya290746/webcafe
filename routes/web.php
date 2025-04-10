@@ -23,9 +23,10 @@ Route::get('/admin/register', [AdminRegisterController::class, 'showForm']);
 Route::post('/admin/register', [AdminRegisterController::class, 'register'])->name('admin.register');
 
 // Line Login Routes
-Route::prefix('Line')->group(function () {
-    Route::get('/Login', [LineController::class, 'redirectToLine'])->name('LineLogin');
-    Route::get('/Callback', [LineController::class, 'handleLineCallback'])->name('LineCallback');
-    Route::get('login/line', [LineController::class, 'redirectToLine']);
+Route::prefix('line')->name('line.')->group(function () {
+    // Line Login Routes (ไม่ใช้ prefix)
+    Route::get('/Line/login', [LineController::class, 'redirectToLine'])->name('line.LineLogin');
+    Route::get('/Line/Callback', [LineController::class, 'handleLineCallback'])->name('line.LineCallback');
+    // Route::get('login/line', [LineController::class, 'redirectToLine']);
 
 });
